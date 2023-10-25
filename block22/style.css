@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: orange;
+}
+
+.party-details {
+  background-color: hotpink;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem;
+}
+
+h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+h3 {
+  margin-top: 0.3rem;
+}
+
+.party,
+.party-details {
+  border: 3px solid black;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.party:nth-child(even) {
+  background-color: yellow;
+}
+.party:nth-child(odd) {
+  background-color: lightblue;
+}
+
+button {
+  margin-top: 0.3rem;
+}
