@@ -1,0 +1,95 @@
+body {
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.all-player-cards {
+  /* overflow: scroll; */
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  margin: 0.5rem;
+}
+
+img {
+  width: 80%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.single-dog-card {
+  border: 3px solid red;
+  display: inline-flex;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+.new-form-heading {
+  text-align: left;
+  margin-left: 0.5rem;
+}
+
+.button-box {
+  display: flex;
+  margin: 1rem;
+  flex-direction: row;
+}
+
+button {
+  height: 3rem;
+  width: 7rem;
+  /* display: inline; */
+  flex-grow: 1;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+}
+
+.form-input-label {
+  display: inline;
+  /* margin: 1rem; */
+}
+
+#new-player-form {
+  border: 3px solid blue;
+  margin: 1rem;
+  background-color: lightblue;
+  padding: 1rem;
+  max-width: 70%;
+}
+
+form {
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-inputs,
+.new-dog-text-inputs {
+  padding: 0.5rem;
+}
+
+#submit-new-dog {
+  background-color: yellow;
+  display: inline-block;
+  /* padding: 0.5rem; */
+  margin: 0.5rem;
+}
+
+.form-input-field {
+  margin-right: 1rem;
+  margin-left: 0.2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.dog-breed,
+.dog-team,
+.dog-position {
+  text-align: center;
+}
