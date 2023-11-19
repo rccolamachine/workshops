@@ -21,9 +21,8 @@ export default function SelectedContact({
     fetchContact(selectedContactId);
   }, []);
 
-  console.log(contact);
   return (
-    <div>
+    <div className="single-contact-view">
       <h2>{contact.name}</h2>
       <h3>Contact: </h3>
       <div>
