@@ -20,8 +20,9 @@ body > div {
 }
 
 #navbar {
-  padding: 2em;
+  padding: 1rem;
   justify-content: space-evenly;
+  background-color: black;
 }
 
 #main-section {
@@ -40,7 +41,36 @@ body > div {
   color: white;
 }
 
+.orange {
+  background-color: orange;
+  color: white;
+}
+
+.yellow {
+  background-color: yellow;
+  color: lightgray !important;
+}
+
+.green {
+  background-color: green;
+  color: white;
+}
+
 .blue {
   background-color: #275db3;
   color: white;
+}
+
+.home {
+  background-color: violet;
+}
+
+#navbar > a {
+  border: 2px solid white;
+  color: white;
+  width: 10rem;
+  padding: 0.5rem;
+  margin: 0.3rem;
+  text-align: center;
+  border-radius: 0.5rem;
 }
