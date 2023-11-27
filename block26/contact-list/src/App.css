@@ -1,0 +1,44 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+tr {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 100%;
+}
+
+th,
+td {
+  display: inline-block;
+  padding: 0.5rem;
+  width: 15rem;
+  overflow-wrap: break-word;
+  text-align: left;
+}
+th {
+  font-size: 2rem;
+  width: 30rem;
+}
+
+.general-view {
+  border: 2px solid orange;
+}
+
+h3 {
+  margin-bottom: 0.25rem;
+}
+
+.back-button {
+  margin: 2rem;
+  border: 2px solid orange;
+}
+
+.single-contact-view {
+  border: 3px solid orange;
+  padding: 2rem;
+  border-radius: 10%;
+}
