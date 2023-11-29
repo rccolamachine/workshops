@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login({ setToken, setIsLoggedIn }) {
@@ -11,6 +11,7 @@ export default function Login({ setToken, setIsLoggedIn }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       const response = await fetch(
         "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login",
@@ -26,6 +27,7 @@ export default function Login({ setToken, setIsLoggedIn }) {
       } else {
         setToken(result.token);
         setIsLoggedIn(true);
+        navigate("./account");
         alert(`${result.message} You are logged in`);
       }
     } catch (error) {
@@ -41,6 +43,7 @@ export default function Login({ setToken, setIsLoggedIn }) {
           Email*:{" "}
           <input
             value={email}
+            required
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -51,6 +54,7 @@ export default function Login({ setToken, setIsLoggedIn }) {
           <input
             type="password"
             value={password}
+            required
             onChange={(e) => {
               setPassword(e.target.value);
             }}

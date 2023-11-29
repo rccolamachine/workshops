@@ -9,16 +9,18 @@ import { Routes, Route } from "react-router-dom";
 
 function App({}) {
   const [token, setToken] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // console.log(token, isLoggedIn);
-
+  const valuedd = JSON.stringify(isLoggedIn);
   return (
     <>
+      {<p>{valuedd}</p>}
+      <Navigations />
       {!isLoggedIn && (
         <Login setToken={setToken} setIsLoggedIn={setIsLoggedIn} />
       )}
-      {token && <Account token={token} />}
-      <Navigations />
+      {/* {token && <Account token={token} />} */}
+
       <Books />
       <h1>
         <img id="logo-image" src={bookLogo} />
@@ -38,9 +40,12 @@ function App({}) {
         views of your single page application!
       </p>
       <Routes>
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/account" element={<Account />} /> */}
+        <Route
+          path="/account"
+          element={<Account isLoggedIn={isLoggedIn} token={token} />}
+        />
       </Routes>
     </>
   );

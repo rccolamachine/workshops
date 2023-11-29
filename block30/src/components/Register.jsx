@@ -16,14 +16,19 @@ export default function Register({}) {
         {
           method: "POST",
           headers: { "Content-type": "application/json" },
-          body: JSON.stringify({ email, password, firstName, lastName }),
+          body: JSON.stringify({
+            email,
+            password,
+            firstname: firstName,
+            lastname: lastName,
+          }),
         }
       );
       const result = await response.json();
       if (result.name) {
         alert(result.message);
       } else {
-        goToLogin("/login", { replace: true });
+        // goToLogin("/login", { replace: true });
         alert(`${result.message}. Please log in again`);
       }
     } catch (error) {

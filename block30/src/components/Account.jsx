@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default async function Account(props) {
+export default function Account(props) {
   console.log(props.token);
 
   useEffect(() => {
