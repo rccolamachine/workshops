@@ -3,7 +3,13 @@ const postsRouter = express.Router();
 
 const { requireUser } = require("./utils");
 
-const { createPost, getAllPosts, updatePost, getPostById } = require("../db");
+const {
+  createPost,
+  deletePost,
+  getAllPosts,
+  updatePost,
+  getPostById,
+} = require("../db");
 
 postsRouter.get("/", async (req, res, next) => {
   try {
@@ -33,7 +39,7 @@ postsRouter.get("/", async (req, res, next) => {
 });
 
 postsRouter.post("/", requireUser, async (req, res, next) => {
-  const { title, content, tags = "" } = req.body;
+  const { title, content, tags = [] } = req.body;
 
   const postData = {};
 
@@ -60,7 +66,7 @@ postsRouter.post("/", requireUser, async (req, res, next) => {
 
 postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
   const { postId } = req.params;
-  const { title, content, tags } = req.body;
+  const { title, content, tags, active } = req.body;
 
   const updateFields = {};
 
@@ -77,6 +83,10 @@ postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
 
   if (content) {
     updateFields.content = content;
+  }
+
+  if (active === true || active == false) {
+    updateFields.active = active;
   }
 
   try {
@@ -98,7 +108,12 @@ postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
 });
 
 postsRouter.delete("/:postId", requireUser, async (req, res, next) => {
-  res.send({ post });
+  try {
+    const deletedPost = await deletePost(req.params.postId);
+    res.send(deletedPost);
+  } catch (error) {
+    next({ name: "PostDeletionError", message: "Error deleting post!" });
+  }
 });
 
 module.exports = postsRouter;
