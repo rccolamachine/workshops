@@ -115,13 +115,6 @@ async function getUserByUsername(username) {
       [username]
     );
 
-    if (!user) {
-      throw {
-        name: "UserNotFoundError",
-        message: "A user with that username does not exist",
-      };
-    }
-
     return user;
   } catch (error) {
     throw error;
@@ -204,6 +197,18 @@ async function updatePost(postId, fields = {}) {
   } catch (error) {
     throw error;
   }
+}
+
+async function deletePost(postId) {
+  try {
+    await client.query(`DELETE FROM post_tags WHERE "postId"=$1`, [postId]);
+    const {
+      rows: [post],
+    } = await client.query(`DELETE FROM posts WHERE id=$1 RETURNING *`, [
+      postId,
+    ]);
+    return post;
+  } catch (error) {}
 }
 
 async function getAllPosts() {
@@ -410,6 +415,7 @@ module.exports = {
   getPostById,
   createPost,
   updatePost,
+  deletePost,
   getAllPosts,
   getPostsByUser,
   getPostsByTagName,
