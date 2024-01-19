@@ -1,29 +1,47 @@
 require('dotenv').config();
-
-const { PORT = 3000 } = process.env;
 const express = require('express');
 const server = express();
-
-const bodyParser = require('body-parser');
-server.use(bodyParser.json());
-
 const morgan = require('morgan');
-server.use(morgan('dev'));
+const chalk = require('chalk');
+const cors = require('cors');
+const {PORT = 3000} = process.env;
 
-server.use((req, res, next) => {
-  console.log("<____Body Logger START____>");
-  console.log(req.body);
-  console.log("<_____Body Logger END_____>");
 
-  next();
-});
-
-const apiRouter = require('./api');
-server.use('/api', apiRouter);
-
-const { client } = require('./db');
+const client = require('./db/client');
 client.connect();
 
+server.use(cors());
+
+
+// logging middleware
+server.use(morgan('dev'));
+// parsing middleware
+server.use(express.json());
+server.use(express.urlencoded({extended: true}));
+
+// Serve Docs
+const path = require('path');
+server.use('/docs', express.static(path.join(__dirname, 'public')));
+
+// Router: /api
+server.use('/api', require('./api'));
+
+server.get('/', (req, res) => {
+  res.redirect('/docs');
+});
+
+// 404 handler
+server.get('*', (req, res) => {
+  res.status(404).send({error: '404 - Not Found', message: 'No route found for the requested URL'});
+});
+
+// error handling middleware
+server.use((error, req, res, next) => {
+  console.error('SERVER ERROR: ', error);
+  if(res.statusCode < 400) res.status(500);
+  res.send({error: error.message, name: error.name, message: error.message, table: error.table});
+});
+
 server.listen(PORT, () => {
-  console.log("The server is up on port", PORT);
+  console.log(chalk.blueBright('Server is listening on PORT:'), chalk.yellow(PORT), chalk.blueBright('Get your routine on!'));
 });
