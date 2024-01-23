@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BookCard from "./BookCard/BookCard";
 
 import { getUserReservations } from "../api/reservations/reservations";
@@ -7,7 +8,7 @@ import { getUserReservations } from "../api/reservations/reservations";
 export default function Account({ token, setToken }) {
   const [myBooksList, setMyBooks] = useState([]);
   const [mySavedList, setMySavedBooks] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const localToken = localStorage.getItem("token");
@@ -27,20 +28,15 @@ export default function Account({ token, setToken }) {
   }, []);
 
   function handleSearch(e) {
-    const searchResults = myBooksList.filter((book) =>
+    const searchResults = mySavedList.filter((book) =>
       book.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setMyBooks(searchResults);
   }
-  function clearSearch() {
-    console.log(mySavedList);
-    setMyBooks(mySavedList);
-    setSearchText("");
-  }
-  console.log(myBooksList);
+
   return (
     <>
-      {myBooksList.length !== 0 && (
+      {mySavedList.length !== 0 && (
         <>
           <h1>All your Books!</h1>
           <h2 style={{ textAlign: "center" }}>Search My Books by Title</h2>
@@ -48,13 +44,20 @@ export default function Account({ token, setToken }) {
             style={{ width: "35%", margin: "0 auto" }}
             type="text"
             onChange={handleSearch}
-            placeholder={searchText}
           />
-          <button onClick={clearSearch}>Clear Search</button>
         </>
       )}
-      {myBooksList.length === 0 && (
-        <h2>Thank you! All your books have been returned.</h2>
+      {myBooksList.length === 0 && mySavedList.length !== 0 && (
+        <h2>
+          This is the end of the search results, but you still have books
+          checked out. Return them soon.
+        </h2>
+      )}
+      {mySavedList.length === 0 && (
+        <>
+          <h2>All of your books have been returned. Thank you so much!</h2>
+          <button onClick={() => navigate(`/`)}>Back To All Books</button>
+        </>
       )}
 
       <div style={{ display: "flex", flexDirection: "column" }}></div>

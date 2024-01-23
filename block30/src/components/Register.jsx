@@ -7,10 +7,12 @@ export default function Register({}) {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     createUser(email, password, firstName, lastName);
+    navigate("/");
   };
 
   return (

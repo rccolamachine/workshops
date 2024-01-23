@@ -42,14 +42,19 @@ export default function BookCard({ book, component, token, ownership }) {
   return (
     <div className="book-card-container">
       <h2>{title}</h2>
-      <img
-        src={coverimage}
-        alt={`A cover image for the book titled ${title}`}
-      />
       {author && <h3>{author}</h3>}
-      <div>{description}</div>
+      {component == "detail" && (
+        <>
+          <img
+            src={coverimage}
+            alt={`A cover image for the book titled ${title}`}
+          />
+          <div>{description}</div>
+        </>
+      )}
+
       {available && <button onClick={handleBorrow}>Borrow Me!</button>}
-      {available || <div>Unavailable to borrow</div>}
+      {!available && ownership !== "mine" && <div>Unavailable to borrow</div>}
 
       {component !== "detail" && (
         <button onClick={() => navigate(`/books/${id}`)}>See Details</button>

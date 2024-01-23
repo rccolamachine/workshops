@@ -40,7 +40,7 @@ async function createUser(email, password, firstName, lastName) {
     if (result.name) {
       alert(result.message);
     } else {
-      alert(`${result.message}. Please log in again`);
+      alert(`${result.message} Please log in again`);
     }
   } catch (error) {
     console.log(error);

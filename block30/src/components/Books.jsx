@@ -5,7 +5,6 @@ import BookCard from "./BookCard/BookCard";
 export default function Books({ setBooks, books, token }) {
   const [allBooksList, setAllBooks] = useState([]);
   const [mySavedList, setAllSavedBooks] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     async function allBooks() {
@@ -21,14 +20,10 @@ export default function Books({ setBooks, books, token }) {
   }, []);
 
   function handleSearch(e) {
-    const searchResults = allBooksList.filter((book) =>
+    const searchResults = mySavedList.filter((book) =>
       book.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setAllBooks(searchResults);
-  }
-  function clearSearch() {
-    setAllBooks(mySavedList);
-    setSearchText("");
   }
 
   return (
@@ -39,10 +34,8 @@ export default function Books({ setBooks, books, token }) {
         style={{ width: "35%", margin: "0 auto" }}
         type="text"
         onChange={handleSearch}
-        placeholder={searchText}
       />
       <div style={{ display: "flex", flexDirection: "column" }}></div>
-      <button onClick={clearSearch}>Clear Search</button>
 
       <div
         style={{
