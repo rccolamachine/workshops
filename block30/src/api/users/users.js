@@ -40,18 +40,30 @@ async function createUser(email, password, firstName, lastName) {
     if (result.name) {
       alert(result.message);
     } else {
-      alert(`${result.message} Please log in again`);
+      alert(`${result.message}!`);
     }
   } catch (error) {
     console.log(error);
   }
 }
 
-async function setAndGetTokenFromLocalStorage(token, setToken) {
-  token && localStorage.setItem("token", token);
-  localStorage.getItem(token);
-  setToken(token);
-  return token;
+async function getUser(token) {
+  console.log(token);
+  try {
+    const response = await fetch(
+      "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
+      {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    alert(error);
+  }
 }
 
-export { loginUser, createUser, setAndGetTokenFromLocalStorage };
+export { loginUser, createUser, getUser };

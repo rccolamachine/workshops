@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/users/users";
-import { setAndGetTokenFromLocalStorage } from "../api/users/users";
 
 export default function Login({ setToken, token }) {
   const [email, setEmail] = useState("");

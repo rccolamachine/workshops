@@ -28,14 +28,13 @@ export default function Books({ setBooks, books, token }) {
 
   return (
     <>
-      <h1>All the Books!</h1>
-      <h2 style={{ textAlign: "center" }}>Search All Books By Title</h2>
-      <input
-        style={{ width: "35%", margin: "0 auto" }}
-        type="text"
-        onChange={handleSearch}
-      />
-      <div style={{ display: "flex", flexDirection: "column" }}></div>
+      <>
+        <h1>All the Books!</h1>
+        <div className="search">
+          <div>Search All Books by Title:</div>
+          <input type="text" onChange={handleSearch} />
+        </div>
+      </>
 
       <div
         style={{

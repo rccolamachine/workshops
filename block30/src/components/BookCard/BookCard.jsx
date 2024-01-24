@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { updateBookAvailability } from "../../api/books/books";
 import { returnBook } from "../../api/reservations/reservations";
@@ -7,6 +8,8 @@ import "./BookCard.css";
 export default function BookCard({ book, component, token, ownership }) {
   const { author, available, coverimage, description, title, id } = book;
   const navigate = useNavigate();
+  const [currentView, setCurrentView] = useState("general");
+  const [whose, setOwnership] = useState("anonymous");
 
   async function handleBorrow() {
     try {
@@ -39,27 +42,39 @@ export default function BookCard({ book, component, token, ownership }) {
     }
   }
 
+  useEffect(() => {
+    component && setCurrentView(component);
+    ownership && setOwnership(ownership);
+  }, []);
+  const containerClasses = `book-card-container ${currentView} ${ownership}`;
+
   return (
-    <div className="book-card-container">
-      <h2>{title}</h2>
-      {author && <h3>{author}</h3>}
+    <div className={containerClasses}>
+      {!available && token && (
+        <div className="borrow">Unavailable to borrow</div>
+      )}
+      {available && token && (
+        <button onClick={handleBorrow} className="borrow">
+          Borrow Me!
+        </button>
+      )}
+      {!token && <div className="borrow">Login to borrow</div>}
+
+      <div className="book-title">{title}</div>
+      {author && <div className="book-author">{author}</div>}
       {component == "detail" && (
         <>
           <img
             src={coverimage}
             alt={`A cover image for the book titled ${title}`}
           />
-          <div>{description}</div>
+          <div className="description">{description}</div>
         </>
       )}
-
-      {available && <button onClick={handleBorrow}>Borrow Me!</button>}
-      {!available && ownership !== "mine" && <div>Unavailable to borrow</div>}
-
       {component !== "detail" && (
         <button onClick={() => navigate(`/books/${id}`)}>See Details</button>
       )}
-      {component == "detail" && (
+      {component == "detail" && ownership !== "mine" && (
         <button onClick={() => navigate(`/`)}>Back To All Books</button>
       )}
       {ownership == "mine" && (

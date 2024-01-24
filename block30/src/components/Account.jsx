@@ -11,11 +11,8 @@ export default function Account({ token, setToken }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const localToken = localStorage.getItem("token");
-    if (localToken) {
-      token = localToken;
-    }
-    async function reservedBooks(token) {
+    if (!token) return;
+    async function reservedBooks() {
       try {
         const myBooks = await getUserReservations(token);
         setMyBooks(myBooks);
@@ -24,8 +21,8 @@ export default function Account({ token, setToken }) {
         console.log(err);
       }
     }
-    reservedBooks(token);
-  }, []);
+    reservedBooks();
+  }, [token]);
 
   function handleSearch(e) {
     const searchResults = mySavedList.filter((book) =>
@@ -39,12 +36,10 @@ export default function Account({ token, setToken }) {
       {mySavedList.length !== 0 && (
         <>
           <h1>All your Books!</h1>
-          <h2 style={{ textAlign: "center" }}>Search My Books by Title</h2>
-          <input
-            style={{ width: "35%", margin: "0 auto" }}
-            type="text"
-            onChange={handleSearch}
-          />
+          <div className="search">
+            <div>Search My Books by Title:</div>
+            <input type="text" onChange={handleSearch} />
+          </div>
         </>
       )}
       {myBooksList.length === 0 && mySavedList.length !== 0 && (

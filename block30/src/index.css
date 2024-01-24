@@ -1,8 +1,8 @@
 body {
   font-family: Georgia, serif;
-  background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
+  background-color: rgb(243, 245, 221);
+  /* margin: 0;
+  padding: 0; */
 }
 
 #logo-image {
@@ -10,4 +10,18 @@ body {
   margin-right: 10px;
 }
 
-/* Add your own custom styles here */
+nav {
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-left: 0.5rem;
+}
+.search > input {
+  width: 35%;
+  margin-left: 1rem;
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser } from "../api/users/users";
 
-export default function Register({}) {
+export default function Register({ token }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -12,7 +12,7 @@ export default function Register({}) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     createUser(email, password, firstName, lastName);
-    navigate("/");
+    !token && navigate("/");
   };
 
   return (
