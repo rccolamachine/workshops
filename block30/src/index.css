@@ -1,0 +1,27 @@
+body {
+  font-family: Georgia, serif;
+  background-color: rgb(243, 245, 221);
+  /* margin: 0;
+  padding: 0; */
+}
+
+#logo-image {
+  width: 30px;
+  margin-right: 10px;
+}
+
+nav {
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  margin-left: 0.5rem;
+}
+.search > input {
+  width: 35%;
+  margin-left: 1rem;
+}
