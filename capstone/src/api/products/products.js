@@ -10,4 +10,14 @@ async function getAllProducts() {
   }
 }
 
-export { getAllProducts };
+async function getProductById(id) {
+  try {
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export { getAllProducts, getProductById };

@@ -9,6 +9,7 @@ export default function ProductCard({
   setUserCart,
 }) {
   let exists = false;
+  const navigate = useNavigate();
   const { category, description, id, image, price, rating, title } = product;
   async function handleAdd() {
     for (let item of userCart) {
@@ -32,9 +33,11 @@ export default function ProductCard({
       <div className="product-category">{category}</div>
       <img src={image} alt={`A product image for ${title}`} />
       <div className="product-rating">
-        Rating: {rating.rate}/5 ({rating.count} reviews)
+        Rating: {rating?.rate}/5 ({rating?.count} reviews)
       </div>
       <div className="product-price">${price?.toFixed(2)}</div>
+      <button onClick={() => navigate(`/products/${id}`)}>See Details</button>
+
       {userId && (
         <button className="add-to-cart" onClick={handleAdd}>
           Add To Cart

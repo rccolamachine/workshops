@@ -5,6 +5,7 @@ import Logout from "./Logout";
 import Navigations from "./Navigations";
 import Cart from "./Cart";
 import Products from "./Products";
+import SingleProduct from "./SingleProduct";
 import { getCartByUserId } from "../api/cart/cart";
 import Checkout from "./Checkout";
 
@@ -75,6 +76,17 @@ const App = () => {
               />
             }
           />
+          <Route
+            path="/products/:id"
+            element={
+              <SingleProduct
+                userCart={userCart}
+                setUserCart={setUserCart}
+                userId={userId}
+              />
+            }
+          />
+
           <Route
             path="/logout"
             element={<Logout setUserId={setUserId} userId={userId} />}
