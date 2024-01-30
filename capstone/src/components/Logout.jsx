@@ -8,6 +8,6 @@ export default function Logout({ userId, setUserId }) {
     localStorage.removeItem("userId");
     localStorage.removeItem("cart");
     alert("You have been successfully logged out. Please log in again.");
-    navigate("/login");
+    navigate("/");
   }, []);
 }
