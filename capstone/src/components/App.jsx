@@ -12,7 +12,7 @@ import Checkout from "./Checkout";
 import "../style/index.css";
 
 const App = () => {
-  const [userId, setUserId] = useState([]);
+  const [userId, setUserId] = useState(null);
   const [userCart, setUserCart] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
 
