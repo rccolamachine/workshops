@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CartCard({ product, userCart, setUserCart }) {
   const { cartInfo, prodInfo } = product;
+  const navigate = useNavigate();
 
   function handleDecrease(e) {
     for (let item of userCart) {
@@ -36,20 +37,23 @@ export default function CartCard({ product, userCart, setUserCart }) {
     <div className="cart-card-container">
       <div className="title-price">
         {" "}
-        <div className="cart-cart-title">{prodInfo.title}</div>
+        <div
+          className="cart-card-title"
+          onClick={() => navigate(`/products/${product.cartInfo.productId}`)}
+        >
+          {prodInfo.title}
+        </div>
       </div>
       <img src={prodInfo.image} alt={`A product image for ${prodInfo.title}`} />
       <div className="quantity-cost">
         {" "}
-        <div className="cart-product-price">
+        <div className="cart-card-price">
           ${prodInfo.price?.toFixed(2)} each
         </div>
-        <div className="cart-product-quantity">
-          Quantity: {cartInfo.quantity}
-        </div>
+        <div className="cart-card-quantity">Quantity: {cartInfo.quantity}</div>
         <button onClick={handleDecrease}>-</button>
         <button onClick={handleIncrease}>+</button>
-        <div className="total-product-cost">
+        <div className="total-card-cost">
           Total: ${(cartInfo.quantity * prodInfo.price).toFixed(2)}
         </div>
       </div>

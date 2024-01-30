@@ -1,19 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAllProducts } from "../api/products/products";
-import ProductCard from "./ProductCard/ProductCard";
 import CartCard from "./CartCard/CartCard";
 
 export default function Cart({
-  userId,
   userCart,
   setUserCart,
   grandTotal,
   setGrandTotal,
 }) {
-  const [productsList, setProductsList] = useState(userCart);
   const [detailedCart, setDetailedCart] = useState([]);
-  const [mySearchCart, setMySearchCart] = useState(userCart);
   const navigate = useNavigate();
   useEffect(() => {
     if (!userCart) return;
@@ -53,7 +49,7 @@ export default function Cart({
 
   return (
     <div className="cart-container">
-      <h2>Your Cart</h2>
+      <h2 className="cart-header">Your Cart</h2>
       <div
         style={{
           display: "inline-flex",
@@ -61,6 +57,7 @@ export default function Cart({
         }}
       >
         {" "}
+        {/* <div className="cards-container"> */}
         <div className="all-cart-cards-container">
           <div className="cart-total-container">
             <div className="cart-total">Total: ${grandTotal.toFixed(2)}</div>
@@ -75,6 +72,7 @@ export default function Cart({
             />
           ))}
         </div>
+        {/* </div> */}
       </div>
     </div>
   );

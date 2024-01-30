@@ -25,7 +25,7 @@ const App = () => {
   }, [userId]);
 
   useEffect(() => {
-    if (!userId) return;
+    // if (!userId) return;
     const localCart = JSON.parse(localStorage.getItem("cart"));
 
     async function getUserCart() {
@@ -42,17 +42,12 @@ const App = () => {
     } else {
       setUserCart(localCart);
     }
-  }, [userId]);
+  }, []);
 
   return (
     <>
       <BrowserRouter>
-        <Navigations
-          // setUserId={setUserId}
-          userId={userId}
-          // userCart={userCart}
-          // setUserCart={setUserCart}
-        />
+        <Navigations userId={userId} />
         <h1 className="site-title">The Fake Store</h1>
         <h2 className="site-byline">...for all your fake needs!</h2>
         {userId && (

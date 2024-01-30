@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Navigations({ userId, userCart, setUserCart }) {
+export default function Navigations({ userId }) {
   return (
     <>
       <nav>

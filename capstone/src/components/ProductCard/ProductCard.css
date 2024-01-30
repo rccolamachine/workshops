@@ -5,14 +5,26 @@
   margin: 30px 15px;
   padding: 2.5%;
   width: 25% !important;
-  border: 1px solid black;
   border-radius: 12px;
   background-color: rgb(213, 214, 255);
 }
 
-.product-card-container img {
-  width: 90%;
+.product-card-container-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 15px;
+  padding: 2.5%;
+  width: 75% !important;
+  border-radius: 12px;
+  background-color: rgb(213, 214, 255);
+}
+
+img {
+  max-width: 90%;
   margin: 1.5rem;
+  max-height: 300px;
+  mix-blend-mode: multiply;
 }
 
 .product-title {
@@ -28,4 +40,12 @@
 .product-price {
   font-size: 1.3em;
   margin: 0.5em;
+}
+
+.login-for-cart {
+  color: rgb(146, 148, 255);
+}
+
+.product-rating {
+  margin-bottom: 0.5em;
 }

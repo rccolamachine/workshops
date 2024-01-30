@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { loginUser } from "../api/login/login";
 import { getAllUsers } from "../api/user/user";
 
 export default function Login({ setUserId, userId }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +43,6 @@ export default function Login({ setUserId, userId }) {
 
         <button>Log in</button>
       </form>
-      {/* <button onClick={() => navigate("./register")}>Register</button> */}
     </div>
   );
 }

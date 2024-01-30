@@ -1,25 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../api/login/login";
-import { getAllUsers } from "../api/user/user";
 
-export default function Checkout({
-  setUserId,
-  userId,
-  grandTotal,
-  userCart,
-  setUserCart,
-}) {
+export default function Checkout({ grandTotal, userCart, setUserCart }) {
   const navigate = useNavigate();
-  const [sendName, setSendName] = useState(undefined);
-  const [sendAddress, setSendAddress] = useState(undefined);
-  const [sendPhone, setSendPhone] = useState(undefined);
-  const [billName, setBillName] = useState(undefined);
-  const [billAddress, setBillAddress] = useState(undefined);
-  const [billPhone, setBillPhone] = useState(undefined);
-  const [billCardNumber, setBillCardNumber] = useState(undefined);
-  const [billExpiration, setBillExpiration] = useState(undefined);
-  const [billCVV, setBillCVV] = useState(undefined);
+  const [sendName, setSendName] = useState("");
+  const [sendAddress, setSendAddress] = useState("");
+  const [sendPhone, setSendPhone] = useState("");
+  const [billName, setBillName] = useState("");
+  const [billAddress, setBillAddress] = useState("");
+  const [billPhone, setBillPhone] = useState("");
+  const [billCardNumber, setBillCardNumber] = useState("");
+  const [billExpiration, setBillExpiration] = useState("");
+  const [billCVV, setBillCVV] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (event) => {
@@ -44,7 +36,7 @@ export default function Checkout({
     };
     setSubmitted(true);
     setUserCart([]);
-    console.log(submitForm);
+    console.log("Your order: ", submitForm);
     localStorage.removeItem("cart");
   };
 
@@ -185,9 +177,7 @@ export default function Checkout({
               </div>
             </>
           )}{" "}
-          {!grandTotal && (
-            <button onClick={() => navigate("/")}>Keep Shopping!</button>
-          )}
+          <button onClick={() => navigate("/")}>Keep Shopping!</button>
         </div>
       )}
       {submitted && (
