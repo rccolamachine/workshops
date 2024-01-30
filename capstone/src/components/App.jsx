@@ -25,7 +25,6 @@ const App = () => {
   }, [userId]);
 
   useEffect(() => {
-    // if (!userId) return;
     const localCart = JSON.parse(localStorage.getItem("cart"));
 
     async function getUserCart() {
