@@ -39,7 +39,6 @@ async function updateBookAvailability(token, id, available) {
       }
     );
     const json = await res.json();
-    console.log(json);
     return json;
   } catch (err) {
     console.log(err);

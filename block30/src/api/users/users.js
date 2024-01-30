@@ -48,7 +48,6 @@ async function createUser(email, password, firstName, lastName) {
 }
 
 async function getUser(token) {
-  console.log(token);
   try {
     const response = await fetch(
       "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/me",
