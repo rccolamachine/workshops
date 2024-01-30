@@ -1,0 +1,24 @@
+.cart-card-container img {
+  max-width: 40%;
+  max-height: 80%;
+  padding: 0%;
+  border-radius: 20px;
+}
+
+.quantity-cost {
+  min-width: 25%;
+  max-width: 35%;
+}
+
+.title-price {
+  max-width: 25%;
+  overflow-x: visible;
+}
+
+.cart-card-title {
+  margin: 2px;
+  border-radius: 2px;
+}
+.cart-card-title:hover {
+  background-color: rgb(184, 185, 255);
+}
