@@ -14,10 +14,8 @@ export default function CartCard({ product, userCart, setUserCart }) {
           if (index !== -1) {
             userCart.splice(index, 1);
           }
-          console.log(userCart);
         }
       }
-      console.log(item.quantity);
       setUserCart(userCart);
       localStorage.setItem("cart", JSON.stringify(userCart));
       window.location.reload();
@@ -39,13 +37,13 @@ export default function CartCard({ product, userCart, setUserCart }) {
       <div className="title-price">
         {" "}
         <div className="cart-cart-title">{prodInfo.title}</div>
-        <div className="cart-product-price"></div>${prodInfo.price?.toFixed(2)}{" "}
-        each
       </div>
-      {/* <div className="cart-price">{prodInfo.description}</div> */}
       <img src={prodInfo.image} alt={`A product image for ${prodInfo.title}`} />
       <div className="quantity-cost">
         {" "}
+        <div className="cart-product-price">
+          ${prodInfo.price?.toFixed(2)} each
+        </div>
         <div className="cart-product-quantity">
           Quantity: {cartInfo.quantity}
         </div>

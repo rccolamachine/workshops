@@ -53,8 +53,8 @@ const App = () => {
           // userCart={userCart}
           // setUserCart={setUserCart}
         />
-        <h1>The Fake Store</h1>
-        <h2>...for all your fake needs!</h2>
+        <h1 className="site-title">The Fake Store</h1>
+        <h2 className="site-byline">...for all your fake needs!</h2>
         {userId && (
           <Cart
             userId={userId}

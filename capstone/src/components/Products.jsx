@@ -5,7 +5,6 @@ import ProductCard from "./ProductCard/ProductCard";
 export default function Products({ userCart, setUserCart, userId }) {
   const [allProductsList, setAllProducts] = useState([]);
   const [mySavedProducts, setAllSavedProducts] = useState([]);
-  console.log(userCart);
   useEffect(() => {
     async function allProducts() {
       try {
@@ -27,14 +26,14 @@ export default function Products({ userCart, setUserCart, userId }) {
   }
 
   return (
-    <>
-      <>
-        <h1>All the Products!</h1>
+    <div className="all-products">
+      <div>
+        <h2>All the Products!</h2>
         <div className="search">
           <div>Search All Products by Title:</div>
           <input type="text" onChange={handleSearch} />
         </div>
-      </>
+      </div>
 
       <div
         style={{
@@ -53,6 +52,6 @@ export default function Products({ userCart, setUserCart, userId }) {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 }

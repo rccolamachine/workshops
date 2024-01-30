@@ -7,6 +7,7 @@ export default function ProductCard({
   userId,
   userCart,
   setUserCart,
+  component,
 }) {
   let exists = false;
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ export default function ProductCard({
       }
       setUserCart(userCart);
     }
-    console.log(exists);
     !exists && userCart.push({ productId: product.id, quantity: 1 });
     setUserCart(userCart);
     localStorage.setItem("cart", JSON.stringify(userCart));
@@ -28,18 +28,35 @@ export default function ProductCard({
 
   return (
     <div className="product-card-container">
-      <div className="product-title">{title}</div>
-      <div className="product-price">{description}</div>
       <div className="product-category">{category}</div>
-      <img src={image} alt={`A product image for ${title}`} />
-      <div className="product-rating">
-        Rating: {rating?.rate}/5 ({rating?.count} reviews)
-      </div>
-      <div className="product-price">${price?.toFixed(2)}</div>
-      <button onClick={() => navigate(`/products/${id}`)}>See Details</button>
+      <div className="product-title">{title}</div>
 
+      {component == "detail" && (
+        <div className="product-description">{description}</div>
+      )}
+
+      <img src={image} alt={`A product image for ${title}`} />
+      <div className="product-price">${price?.toFixed(2)} each</div>
+      {component == "detail" && (
+        <div className="product-rating">
+          Rating: {rating?.rate}/5 ({rating?.count} reviews)
+        </div>
+      )}
+      {component !== "detail" && (
+        <button
+          onClick={() => navigate(`/products/${id}`)}
+          className="product-button"
+        >
+          See Details
+        </button>
+      )}
+      {component == "detail" && (
+        <button onClick={() => navigate(`/`)} className="product-button">
+          Back to All Products
+        </button>
+      )}
       {userId && (
-        <button className="add-to-cart" onClick={handleAdd}>
+        <button className="product-button" onClick={handleAdd}>
           Add To Cart
         </button>
       )}

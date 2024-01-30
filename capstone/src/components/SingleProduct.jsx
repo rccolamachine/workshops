@@ -9,12 +9,10 @@ export default function SingleProduct({ userCart, setUserCart, userId }) {
   const [singleProduct, setSingleProduct] = useState({});
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log("hello");
   useEffect(() => {
     async function getProductData() {
       try {
         const productObj = await getProductById(id);
-        console.log(productObj);
         if (productObj === null) {
           navigate("/");
         } else {
@@ -39,7 +37,6 @@ export default function SingleProduct({ userCart, setUserCart, userId }) {
       console.log(err);
     }
   }
-  console.log(singleProduct?.rating);
   return (
     <>
       <div
@@ -49,6 +46,7 @@ export default function SingleProduct({ userCart, setUserCart, userId }) {
           justifyContent: "center",
           alignItems: "center",
         }}
+        className="single-product"
       >
         {" "}
         <ProductCard

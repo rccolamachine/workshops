@@ -1,18 +1,119 @@
 body {
+  background-color: rgb(146, 148, 255);
   margin: 0;
-  padding: 0;
+  padding: 2%;
   height: 100vh;
   width: 100vw !important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .cart-card-container {
+  display: inline-flex;
+  background-color: rgb(213, 214, 255);
+  flex-direction: row;
+  align-items: center;
+  margin: 0px 5px;
+  padding: 5px 15px;
+  height: 100%;
+  min-width: 300px;
+  max-width: 300px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.cart-total-container {
+  background-color: rgb(213, 214, 255);
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* margin: 30px 15px; */
+  margin: 0px 5px;
   padding: 5px 15px;
-  height: 150px;
-  width: 300px;
+  height: 100%;
+  min-width: 300px;
+  max-width: 300px;
   border: 1px solid black;
   border-radius: 12px;
+  text-align: center;
+}
+
+.cart-total-container button {
+  margin: 5%;
+  /* width: 13rem; */
+}
+
+.all-cart-cards-container {
+  display: inline-flex;
+  /* flex-direction: row; */
+  align-items: center;
+  /* margin: 0px 5px; */
+  padding: 10px 15px;
+  height: 150px;
+  width: 100vw;
+  overflow-x: scroll;
+}
+
+.cart-total {
+  font-size: 30px;
+}
+
+button {
+  max-width: 10rem !important;
+}
+
+nav {
+  padding: 10px;
+}
+
+.site-title,
+.site-byline {
+  padding-left: 5%;
+}
+
+.cart-container {
+  background-color: rgb(184, 185, 255);
+
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: lightsteelblue;
+  min-width: 1.8rem;
+}
+
+.all-products,
+.single-product {
+  background-color: rgb(184, 185, 255);
+  border-radius: 12px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.check-out {
+  background-color: rgb(184, 185, 255);
+
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.check-out button {
+  margin: 5px;
+}
+
+.address-container {
+  background-color: rgb(213, 214, 255);
+  display: block;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px;
+  padding: 5px 15px;
+  height: 100%;
+  min-width: 300px;
+  max-width: 300px;
+  border: 1px solid black;
+  border-radius: 12px;
+  text-align: center;
 }

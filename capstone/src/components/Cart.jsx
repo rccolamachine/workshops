@@ -15,14 +15,14 @@ export default function Cart({
   const [detailedCart, setDetailedCart] = useState([]);
   const [mySearchCart, setMySearchCart] = useState(userCart);
   const navigate = useNavigate();
-
-  console.log(userCart);
   useEffect(() => {
     if (!userCart) return;
+
     async function getCartDetails() {
       try {
-        const allProductsList = await getAllProducts();
         const cartDetails = [];
+        const allProductsList = await getAllProducts();
+
         for (let cartProduct of userCart) {
           for (let allProduct of allProductsList) {
             if (cartProduct.productId === allProduct.id) {
@@ -52,8 +52,8 @@ export default function Cart({
   }, [detailedCart]);
 
   return (
-    <>
-      <h2>Cart</h2>
+    <div className="cart-container">
+      <h2>Your Cart</h2>
       <div
         style={{
           display: "inline-flex",
@@ -61,19 +61,21 @@ export default function Cart({
         }}
       >
         {" "}
-        <div className="cart-card-container">
-          <div>Total: ${grandTotal.toFixed(2)}</div>
-          <button onClick={() => navigate("./checkout")}>Check Out</button>
+        <div className="all-cart-cards-container">
+          <div className="cart-total-container">
+            <div className="cart-total">Total: ${grandTotal.toFixed(2)}</div>
+            <button onClick={() => navigate("./checkout")}>Check Out</button>
+          </div>
+          {detailedCart.map((product) => (
+            <CartCard
+              key={product.cartInfo.productId}
+              product={product}
+              userCart={userCart}
+              setUserCart={setUserCart}
+            />
+          ))}
         </div>
-        {detailedCart.map((product) => (
-          <CartCard
-            key={product.cartInfo.productId}
-            product={product}
-            userCart={userCart}
-            setUserCart={setUserCart}
-          />
-        ))}
       </div>
-    </>
+    </div>
   );
 }

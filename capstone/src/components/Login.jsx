@@ -12,10 +12,6 @@ export default function Login({ setUserId, userId }) {
     event.preventDefault();
     loginUser(username, password);
     const allUsers = await getAllUsers();
-    console.log(allUsers);
-    for (let user of allUsers) {
-      console.log(user.id);
-    }
     const myUser = allUsers.filter((user) => user.username === username);
     await setUserId(myUser[0].id);
     localStorage.setItem("userId", myUser[0].id);
