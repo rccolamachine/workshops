@@ -18,7 +18,6 @@ export default function BookCard({ book, component, token, ownership }) {
         book.id,
         "false"
       );
-      console.log(bookToBorrow);
       if (bookToBorrow.book) {
         alert("Book successfully borrowed!");
         window.parent.location = window.parent.location.href;
@@ -29,10 +28,8 @@ export default function BookCard({ book, component, token, ownership }) {
   }
 
   async function handleReturn() {
-    console.log(book);
     try {
       const bookToReturn = await returnBook(token, book.id);
-      console.log(bookToReturn.deletedReservation);
       if (bookToReturn.deletedReservation) {
         alert("Book successfully returned!");
         window.parent.location = window.parent.location.href;

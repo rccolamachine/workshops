@@ -14,7 +14,6 @@ export default function SingleBook({ token }) {
     async function getBookData() {
       try {
         const bookObj = await getBookById(id);
-        console.log(bookObj);
         if (bookObj.data === null) {
           navigate("/");
         } else {
@@ -39,7 +38,6 @@ export default function SingleBook({ token }) {
       console.log(err);
     }
   }
-  console.log(singleBook);
   return (
     <div
       style={{

@@ -1,5 +1,4 @@
 async function getUserReservations(token) {
-  console.log(token);
   try {
     const response = await fetch(
       "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations",
@@ -18,7 +17,6 @@ async function getUserReservations(token) {
 }
 
 async function returnBook(token, id) {
-  console.log(token);
   try {
     const response = await fetch(
       `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/reservations/${id}`,
