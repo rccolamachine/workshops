@@ -6,12 +6,14 @@ import Navigations from "./Navigations";
 import Cart from "./Cart";
 import Products from "./Products";
 import { getCartByUserId } from "../api/cart/cart";
+import Checkout from "./Checkout";
 
 import "../style/index.css";
 
 const App = () => {
   const [userId, setUserId] = useState([]);
   const [userCart, setUserCart] = useState([]);
+  const [grandTotal, setGrandTotal] = useState(0);
 
   useEffect(() => {
     if (!userId) return;
@@ -44,15 +46,22 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-        <div>{userId}</div>
         <Navigations
           // setUserId={setUserId}
           userId={userId}
           // userCart={userCart}
           // setUserCart={setUserCart}
         />
+        <h1>The Fake Store</h1>
+        <h2>...for all your fake needs!</h2>
         {userId && (
-          <Cart userId={userId} userCart={userCart} setUserCart={setUserCart} />
+          <Cart
+            userId={userId}
+            userCart={userCart}
+            setUserCart={setUserCart}
+            grandTotal={grandTotal}
+            setGrandTotal={setGrandTotal}
+          />
         )}
         {!userId && <Login setUserId={setUserId} userId={userId} />}
         <Routes>
@@ -69,6 +78,16 @@ const App = () => {
           <Route
             path="/logout"
             element={<Logout setUserId={setUserId} userId={userId} />}
+          />
+          <Route
+            path="/checkout"
+            element={
+              <Checkout
+                userCart={userCart}
+                setUserCart={setUserCart}
+                grandTotal={grandTotal}
+              />
+            }
           />
           {/* <Route
             path="/cart"

@@ -35,9 +35,11 @@ export default function ProductCard({
         Rating: {rating.rate}/5 ({rating.count} reviews)
       </div>
       <div className="product-price">${price?.toFixed(2)}</div>
-      <button className="add-to-cart" onClick={handleAdd}>
-        Add To Cart
-      </button>
+      {userId && (
+        <button className="add-to-cart" onClick={handleAdd}>
+          Add To Cart
+        </button>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import { getAllProducts } from "../api/products/products";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard/ProductCard";
 
-export default function Products({ userCart, setUserCart }) {
+export default function Products({ userCart, setUserCart, userId }) {
   const [allProductsList, setAllProducts] = useState([]);
   const [mySavedProducts, setAllSavedProducts] = useState([]);
   console.log(userCart);
@@ -49,6 +49,7 @@ export default function Products({ userCart, setUserCart }) {
             product={product}
             userCart={userCart}
             setUserCart={setUserCart}
+            userId={userId}
           />
         ))}
       </div>

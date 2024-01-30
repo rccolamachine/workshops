@@ -4,11 +4,18 @@ import { getAllProducts } from "../api/products/products";
 import ProductCard from "./ProductCard/ProductCard";
 import CartCard from "./CartCard/CartCard";
 
-export default function Cart({ userId, userCart, setUserCart }) {
+export default function Cart({
+  userId,
+  userCart,
+  setUserCart,
+  grandTotal,
+  setGrandTotal,
+}) {
   const [productsList, setProductsList] = useState(userCart);
   const [detailedCart, setDetailedCart] = useState([]);
   const [mySearchCart, setMySearchCart] = useState(userCart);
-  const [grandTotal, setGrandTotal] = useState(0);
+  const navigate = useNavigate();
+
   console.log(userCart);
   useEffect(() => {
     if (!userCart) return;
@@ -56,6 +63,7 @@ export default function Cart({ userId, userCart, setUserCart }) {
         {" "}
         <div className="cart-card-container">
           <div>Total: ${grandTotal.toFixed(2)}</div>
+          <button onClick={() => navigate("./checkout")}>Check Out</button>
         </div>
         {detailedCart.map((product) => (
           <CartCard
