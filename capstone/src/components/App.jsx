@@ -12,20 +12,20 @@ import Checkout from "./Checkout";
 import "../style/index.css";
 
 const App = () => {
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState();
   const [userCart, setUserCart] = useState([]);
   const [grandTotal, setGrandTotal] = useState(0);
 
   useEffect(() => {
-    if (!userId) return;
+    if (userId == []) return;
     const localUserId = localStorage.getItem("userId");
     if (localUserId) {
       setUserId(localUserId);
     }
   }, [userId]);
-
+  
   useEffect(() => {
-    if (!userId) return;
+    if (userId == []) return;
     const localCart = JSON.parse(localStorage.getItem("cart"));
 
     async function getUserCart() {
@@ -96,12 +96,6 @@ const App = () => {
               />
             }
           />
-          {/* <Route
-            path="/cart"
-            element={
-
-            } */}
-          {/* /> */}
         </Routes>
       </BrowserRouter>
     </>
