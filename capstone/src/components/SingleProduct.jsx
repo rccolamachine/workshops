@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getProductById } from "../api/products/products";
 
 import ProductCard from "./ProductCard/ProductCard";
-// import { deletePlayer } from "../API";
 
 export default function SingleProduct({ userCart, setUserCart, userId }) {
   const [singleProduct, setSingleProduct] = useState({});
@@ -26,17 +25,6 @@ export default function SingleProduct({ userCart, setUserCart, userId }) {
     getProductData();
   }, [navigate]);
 
-  async function handleDelete() {
-    try {
-      const result = await deletePlayer(id);
-      if (result.success) {
-        alert(`Puppy with id: ${id} successfully removed from roster.`);
-        navigate("./");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  }
   return (
     <>
       <div

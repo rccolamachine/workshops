@@ -6,11 +6,7 @@ async function loginUser(username, password) {
       body: JSON.stringify({ username, password }),
     });
     const result = await response.json();
-    if (result.name) {
-      alert(result.message);
-    } else {
-      alert(`${result.message} You are logged in`);
-    }
+    alert("You are logged in!");
   } catch (error) {
     alert(error);
   }
