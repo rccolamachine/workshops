@@ -117,6 +117,7 @@ button {
 .search-section {
   background-color: rgb(233, 234, 255);
   margin: 5px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
