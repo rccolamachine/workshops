@@ -2,7 +2,6 @@ body {
   background-color: rgb(146, 148, 255);
   margin: 0;
   padding: 2%;
-  height: 100vh;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -127,10 +126,21 @@ button {
 .category-dropdown,
 .search {
   display: flex;
-
+  flex-direction: row;
   padding: 0.5rem 2rem;
-  overflow-y: hidden;
   align-items: center;
+  width: 25%;
+}
+
+.category-dropdown {
+  align-items: start !important;
+}
+
+.dropdown-parent {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 30%;
 }
 
 .dropdown {
@@ -139,6 +149,8 @@ button {
   margin-left: 1rem;
   padding: 0.5rem;
   border-radius: 12px;
+  position: absolute;
+  min-width: 10rem;
 }
 
 .search-input,
@@ -151,7 +163,6 @@ button {
 .cart-container::-webkit-scrollbar {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  color: white;
 }
 
 .cart-container::-webkit-scrollbar-thumb {

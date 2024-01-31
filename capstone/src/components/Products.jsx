@@ -58,13 +58,15 @@ export default function Products({ userCart, setUserCart, userId }) {
         <div>-OR-</div>
         <div className="category-dropdown">
           <div>Click to Filter Products by Category: </div>
-          <Dropdown
-            options={options}
-            onChange={handleDropdown}
-            value="all"
-            placeholder="Select an option"
-            className="dropdown"
-          />
+          <div className="dropdown-parent">
+            <Dropdown
+              options={options}
+              onChange={handleDropdown}
+              value="all"
+              placeholder="Select an option"
+              className="dropdown"
+            />
+          </div>
         </div>
       </div>
       <div
