@@ -117,7 +117,6 @@ button {
 .search-section {
   background-color: rgb(233, 234, 255);
   margin: 5px;
-  padding-bottom: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -126,32 +125,36 @@ button {
 
 .category-dropdown,
 .search {
+  font-size: 1.2rem;
   display: flex;
   flex-direction: row;
   padding: 0.5rem 2rem;
   align-items: center;
-  width: 25%;
+  width: 35%;
 }
 
 .category-dropdown {
+  display: flex;
+  height: 120%;
   align-items: start !important;
 }
 
 .dropdown-parent {
   position: relative;
-  margin: 0;
-  padding: 0;
-  width: 30%;
+  margin-left: 1.5rem;
+  background-color: green;
 }
 
 .dropdown {
   background-color: rgb(146, 148, 255);
   color: rgb(233, 234, 255);
-  margin-left: 1rem;
-  padding: 0.5rem;
-  border-radius: 12px;
+  padding-left: 0.5rem;
+  margin: 0px;
+  border-radius: 6px;
   position: absolute;
   min-width: 10rem;
+  top: 0%;
+  left: 0%;
 }
 
 .search-input,
