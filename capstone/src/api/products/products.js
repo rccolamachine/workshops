@@ -6,7 +6,7 @@ async function getAllProducts() {
     const result = await response.json();
     return result;
   } catch (error) {
-    alert(error);
+    throw error;
   }
 }
 

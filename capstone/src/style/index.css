@@ -117,7 +117,6 @@ button {
 
 .search-section {
   background-color: rgb(233, 234, 255);
-  /* padding: 5px 5px; */
   margin: 5px;
   display: flex;
   flex-direction: row;
@@ -147,4 +146,15 @@ button {
 .sign-in-label,
 .sign-in button {
   margin-left: 0.5rem;
+}
+
+.cart-container::-webkit-scrollbar {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: white;
+}
+
+.cart-container::-webkit-scrollbar-thumb {
+  background-color: rgb(233, 234, 255);
+  border-radius: 12px;
 }

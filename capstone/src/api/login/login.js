@@ -8,7 +8,7 @@ async function loginUser(username, password) {
     const result = await response.json();
     alert("You are logged in!");
   } catch (error) {
-    alert(error);
+    throw error;
   }
 }
 
