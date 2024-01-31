@@ -19,7 +19,7 @@ export default function Login({ setUserId, userId }) {
     <div className="sign-in">
       <h2>Sign In!</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="sign-in-label">
           Username*:{" "}
           <input
             value={username}
@@ -27,9 +27,10 @@ export default function Login({ setUserId, userId }) {
             onChange={(e) => {
               setUsername(e.target.value);
             }}
+            className="sign-in-input"
           />
         </label>
-        <label>
+        <label className="sign-in-label">
           Password*:{" "}
           <input
             type="password"
@@ -38,6 +39,7 @@ export default function Login({ setUserId, userId }) {
             onChange={(e) => {
               setPassword(e.target.value);
             }}
+            className="sign-in-input"
           />
         </label>
 

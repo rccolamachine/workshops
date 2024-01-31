@@ -68,7 +68,8 @@ nav {
   padding-left: 5%;
 }
 
-.cart-container {
+.cart-container,
+.sign-in {
   background-color: rgb(184, 185, 255);
   border-radius: 12px;
   padding: 10px;
@@ -85,7 +86,7 @@ button {
   background-color: rgb(184, 185, 255);
   border-radius: 12px;
   padding: 10px;
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 
 .check-out {
@@ -112,4 +113,38 @@ button {
   max-width: 300px;
   border-radius: 12px;
   text-align: center;
+}
+
+.search-section {
+  background-color: rgb(233, 234, 255);
+  /* padding: 5px 5px; */
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.category-dropdown,
+.search {
+  display: flex;
+
+  padding: 0.5rem 2rem;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.dropdown {
+  background-color: rgb(146, 148, 255);
+  color: rgb(233, 234, 255);
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+.search-input,
+.sign-in-input,
+.sign-in-label,
+.sign-in button {
+  margin-left: 0.5rem;
 }
